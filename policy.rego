@@ -7,5 +7,6 @@ import rego.v1
 default allow := false
 
 allow if {
-    input.attributes.request.http.headers["testing-data"] != "block-me"
+    request_headers := input.attributes.request.http.headers
+    headers["testing-data"] && headers["testing-data"] != "block-me"
 }
