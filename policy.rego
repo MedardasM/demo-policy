@@ -1,7 +1,10 @@
 # Nučiaudėtas policy
 
 package envoy.authz
-default allow = false
+
+import rego.v1
+
+default allow := false
 
 allow if {
     input.attributes.request.http.headers["testing-data"] != "block"
