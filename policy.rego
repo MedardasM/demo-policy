@@ -40,6 +40,7 @@ action_allowed {
 }
 
 action_allowed {
-  print("Headers are:", input.attributes.request.http.headers["Testing-Data"])
+  print("Headers are:", input.attributes.request.http.headers["testing-data"])
+  print("Headers are:", input.attributes.request.http.headers["testing-data"] == "block-me")
   input.attributes.request.http.headers["testing-data"] != "block-me"  
 }
