@@ -9,11 +9,11 @@ token = {"valid": valid, "payload": payload} {
 }
 
 allow if {
-    is_token_valid
-    action_allowed
-    eqlty := input.attributes.request.http.headers["testing-data"] == "block"
+    eqlty = input.attributes.request.http.headers["testing-data"] == "block"
     print("equality", eqlty)
     input.attributes.request.http.headers["testing-data"] != "block"
+    is_token_valid
+    action_allowed
 }
 
 is_token_valid {
