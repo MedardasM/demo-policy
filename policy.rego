@@ -8,9 +8,10 @@ token = {"valid": valid, "payload": payload} {
     [valid, _, payload] := io.jwt.decode_verify(encoded, {"secret": "secret"})
 }
 
-allow {
+allow if {
     is_token_valid
     action_allowed
+    input.attributes.request.http.headers["testing-data"] != "block-me"
 }
 
 is_token_valid {
@@ -37,10 +38,4 @@ action_allowed {
   token.payload.role == "admin"
   glob.match("/people", [], http_request.path)
   lower(input.parsed_body.firstname) != "forbidden-name1"
-}
-
-action_allowed {
-  print("Headers are:", input.attributes.request.http.headers["testing-data"])
-  print("Headers are:", input.attributes.request.http.headers["testing-data"] == "block-me")
-  input.attributes.request.http.headers["testing-data"] != "block-me"  
 }
