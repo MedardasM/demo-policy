@@ -11,8 +11,6 @@ token = {"valid": valid, "payload": payload} {
 allow if {
     is_token_valid
     action_allowed
-    print("testing-data == block?", input.attributes.request.http.headers["testing-data"] != "block")
-    input.attributes.request.http.headers["testing-data"] != "block"
 }
 
 is_token_valid {
@@ -39,4 +37,9 @@ action_allowed {
   token.payload.role == "admin"
   glob.match("/people", [], http_request.path)
   lower(input.parsed_body.firstname) != "forbidden-name1"
+}
+
+action_allowed {
+  print("testing-data != block?", input.attributes.request.http.headers["testing-data"] != "block")
+  input.attributes.request.http.headers["testing-data"] != "block"
 }
