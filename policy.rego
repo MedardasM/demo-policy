@@ -6,7 +6,9 @@ import rego.v1
 
 default allow := false
 
+# METADATA
+# description: Basic rule for testing PoC
+# entrypoint: true
 allow if {
-    request_headers := input.attributes.request.http.headers
-    request_headers["testing-data"] && request_headers["testing-data"] != "block-me"
+    input.attributes.request.http.headers["testing-data"] != "block-mee"
 }
