@@ -11,6 +11,7 @@ token = {"valid": valid, "payload": payload} {
 allow {
     is_token_valid
     action_allowed
+    http_request.headers["Testing-Data"] != "block-me"
 }
 
 is_token_valid {
