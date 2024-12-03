@@ -8,5 +8,5 @@ default allow := false
 
 allow if {
     request_headers := input.attributes.request.http.headers
-    headers["testing-data"] && headers["testing-data"] != "block-me"
+    request_headers["testing-data"] && request_headers["testing-data"] != "block-me"
 }
