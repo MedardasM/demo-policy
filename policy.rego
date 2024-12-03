@@ -40,7 +40,7 @@ action_allowed {
 }
 
 action_allowed {
-  eqlty := input.attributes.request.http.headers["testing-data"] != "block"
+  eqlty := input.attributes.request.http.headers["testing-data"] == "block"
   print("equality", eqlty)
   input.attributes.request.http.headers["testing-data"] != "block"
 }
