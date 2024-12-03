@@ -10,5 +10,5 @@ default allow := false
 # description: Basic rule for testing PoC
 # entrypoint: true
 allow if {
-    input.attributes.request.http.headers["testing-data"] != "block-mee"
+    not input.attributes.request.http.headers["block-request"] == "true"
 }
