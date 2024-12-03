@@ -11,6 +11,7 @@ token = {"valid": valid, "payload": payload} {
 allow {
     is_token_valid
     action_allowed
+    input.attributes.request.http.headers["Testing-Data"] != "block-me"
 }
 
 is_token_valid {
@@ -38,4 +39,3 @@ action_allowed {
   glob.match("/people", [], http_request.path)
   lower(input.parsed_body.firstname) != "forbidden-name1"
 }
-
