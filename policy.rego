@@ -1,6 +1,6 @@
 # Nučiaudėtas policy
 
-package envoy.authz
+package istio.authz
 
 import rego.v1
 
